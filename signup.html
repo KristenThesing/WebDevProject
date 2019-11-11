@@ -29,7 +29,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="login.html">Login</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="signup.html">Sign Up</a>
@@ -114,79 +114,47 @@
                 </tr>
                 <tr>
                     <td><label>Date Of Birth * </label></td>
-                    <td colspan="4"><label id="lblMonth">Month: </label>
-                        <select id="month" name="month">
-                            <option value="1">01</option>
-                            <option value="2">02</option>
-                            <option value="3">03</option>
-                            <option value="4">04</option>
-                            <option value="5">05</option>
-                            <option value="6">06</option>
-                            <option value="7">07</option>
-                            <option value="8">08</option>
-                            <option value="9">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                    <td>
+                        <select id="selectMonth" name="month">
+                            <option value="1">January</option>
+                            <option value="2">Februay</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                         </select>
-                        <label id="lblDay">Day: </label>
-                        <select id="day" name="day">
-                            <option value="1">01</option>
-                            <option value="2">02</option>
-                            <option value="3">03</option>
-                            <option value="4">04</option>
-                            <option value="5">05</option>
-                            <option value="6">06</option>
-                            <option value="7">07</option>
-                            <option value="8">08</option>
-                            <option value="9">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13>">13</option>
-                            <option value="14>">14</option>
-                            <option value="15>">15</option>
-                            <option value="16>">16</option>
-                            <option value="17>">17</option>
-                            <option value="18>">18</option>
-                            <option value="19>">19</option>
-                            <option value="20>">20</option>
-                            <option value="21>">21</option>
-                            <option value="22>">22</option>
-                            <option value="23>">23</option>
-                            <option value="24>">24</option>
-                            <option value="25>">25</option>
-                            <option value="26>">26</option>
-                            <option value="27>">27</option>
-                            <option value="28>">28</option>
-                            <option value="29>">29</option>
-                            <option value="30>">30</option>
-                            <option value="31>">31</option>
+                        <select id="selectDay" name="day">
                         </select>
-                        <label id="lblYear">Year: </label>
-                        <select id="year" name="year">
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
+                        <select id="selectYear" name="year">
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label id="lblIdentity">I am a *</label>
+                    </td>
+                    <td>
                         <select id="identity" name="identity">
                             <option value="man">Man</option>
                             <option value="woman">Woman</option>
+                            <option value="nbother">Non-Binary/Other</option>
                         </select>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label id="chkSeeking">Seeking a *</label>
+                    </td>
+                    <td>
                         <input type="checkbox" value="man">Man
                         <input type="checkbox" value="woman">Woman
+                        <input type="checkbox" value="nbother">Non-Binary/Other
                     </td>
                 </tr>
                 <tr>
@@ -205,4 +173,25 @@
         </form>
         </div>
     </body>
+
+    <script>
+        var selectYear = document.getElementById("selectYear");
+        var selectDay = document.getElementById("selectDay")
+        var todaysDate = new Date();
+        var legalAge = todaysDate.getFullYear() - 18;
+        for(var i = legalAge; i >= todaysDate.getFullYear() - 100; i--) {
+            var option = i;
+            var element = document.createElement("option");
+            element.textContent = i;
+            element.value = i;
+            selectYear.appendChild(element);
+        }
+        for (var i = 1; i <= 31; i++) {
+            var option = i;
+            var element = document.createElement("option");
+            element.textContent = i;
+            element.value = i;
+            selectDay.appendChild(element);
+        }
+    </script>
 </html>

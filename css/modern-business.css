@@ -20,3 +20,21 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+.below-nav {
+  padding-top: 3em;
+  margin-left: 30%;
+}
+
+.login {
+  padding-top: 5em;
+  margin-left: 37%;
+  text-align: center;
+}
+
+td {
+  padding-right: 3em;
+  padding-left: 2em;
+  padding-top: 0.5em;
+  width: auto;
+}
