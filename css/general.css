@@ -1,0 +1,81 @@
+/*Elements*/
+body {
+  padding-top: 56px;
+}
+
+td {
+  padding-right: 3em;
+  padding-left: 2em;
+  padding-top: 0.5em;
+  width: auto;
+}
+
+img {
+  margin:10px;
+  display:block;
+}
+
+/*Classes*/
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.below-nav {
+  padding-top: 3em;
+  margin-left: 30%;
+}
+
+.login {
+  padding-top: 5em;
+  margin-left: 37%;
+  text-align: center;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 40%;
+  border-radius: 5px;
+  margin:5px;
+  padding: 10px;
+  display: flex;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  border-radius: 5px;
+  clear: both;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+
+.profiles {
+  margin-left: 15%;
+}
