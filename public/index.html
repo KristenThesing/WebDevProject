@@ -80,7 +80,7 @@
                   <input type="password" id="confirm-password" required />
                   <label for="confirm-password">Confirm password</label>
               </div>
-              <button class="btn pink lighten-2 z-depth-0">Sign up</button>
+              <button class="btn pink lighten-2 z-depth-0" id="saveChanges">Sign up</button>
               <p class="error pink-text center-align"></p>
           </form>
       </div>
@@ -189,6 +189,48 @@
       const auth = firebase.auth();
       const db = firebase.firestore();
       const functions = firebase.functions();
+      var firestore = firebase.firestore();
+
+
+        const docRef = firestore.collection("users").doc("SignUpData");
+
+        const firstName = document.getElementById('firstName');
+        const lastName = document.getElementById('lastName');
+        const emailAddress = document.getElementById('signup-email');
+        const password1 = document.getElementById('signup-password');
+        const password2 = document.getElementById('confirm-password');
+        const saveButton = document.getElementById('saveChanges');
+
+        saveButton.addEventListener("click",function(){
+             const firstName1 = firstName.value;
+             const lastName1 = lastName.value;
+             const emailAddress1 =emailAddress.value;
+
+             const password1 = document.getElementById('signup-password');
+             const password2 = document.getElementById('confirm-password');
+
+             const signUppassword = password1.value;
+             const confirmPassword = password2.value;
+             
+
+             docRef.set({
+        firstName:firstName1,
+        lastName:lastName1,
+        emailAddress: emailAddress1,
+        password1: signUppassword,
+        password2:confirmPassword
+
+
+
+
+        });
+    })
+
+
+     
+
+
+      
 
   </script>
 
