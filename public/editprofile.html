@@ -135,18 +135,20 @@
                         <label id="chkSeeking">Seeking a *</label>
                     </td>
                     <td>
-                        <input type="checkbox" value="man">Man
-                        <input type="checkbox" value="woman">Woman
-                        <input type="checkbox" value="nbother">Non-Binary/Other
+                        <select id="seeking" name="seeking">
+                            <option value="man">Man</option>
+                            <option value="woman">Woman</option>
+                            <option value="nbother">Non-Binary/Other</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
                     <td><label>New Password</label></td>
-                    <td><input type="password" name="pwCreate"></td>
+                    <td><input type="password" id="password1" name="pwCreate"></td>
                 </tr>
                 <tr>
                     <td><label>Confirm New Password</label></td>
-                    <td><input type="password" name="pwConfirm"></td>
+                    <td><input type="password" id="password2"name="pwConfirm"></td>
                 </tr>
                 <tr>
                     <td>
@@ -182,16 +184,44 @@
             var firestore = firebase.firestore();
 
             const docRef = firestore.collection("users").doc("profileData");
-            const preObject = document.getElementById('fname');
-             const saveButton = document.getElementById('saveChanges');
+            const firstName = document.getElementById('fname');
+            const lastName = document.getElementById('lname');
+            const city = document.getElementById('city');
+            const state = document.getElementById('state');
+            const identity = document.getElementById('identity');
+            const seeking = document.getElementById('seeking');
+           
+            
+            const saveButton = document.getElementById('saveChanges');
 
            
 
              saveButton.addEventListener("click",function(){
-             const textToSave = preObject.value;
-             console.log("I am going to save" + textToSave + "To firesore");
+             const firstName1 = firstName.value;
+             const lastName1 = lastName.value;
+             const city1 = city.value;
+             const state1 = state.value;
+             const identity1 = identity.value;
+             const seeking1 = seeking.value;
+             const password1 = document.getElementById('password1');
+             const password2 = document.getElementById('password2');
+             const password11 = password1.value;
+             const password22 = password2.value;
+
+             console.log("first name: " + firstName1 + " last name: " + lastName1 + " city: "
+             + city1 + " state: " + state1 + " identity: " + identity1 + " seeking " + seeking1 +
+             " newPass: "+ password11 + " confirm " + password22)
          docRef.set({
-        fname:textToSave 
+        fname:firstName1,
+        lname:lastName1,
+        city:city1,
+        state:state1,
+        seeking:seeking1,
+        identity:identity1,
+        password1:password11,
+        password2:password22
+
+
     });
   })
 
