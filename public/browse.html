@@ -75,7 +75,7 @@
             <p id="DealBreaker-0-3"></p>
             <p id="age-0"></p>
             <p id="city-0"></p>
-            <p id="email-0"></p>
+            <p>Email: <a id="email-0"></a></p>
           </span>
         </div>
 
@@ -88,7 +88,7 @@
             <p id="DealBreaker-1-3"></p>
             <p id="age-1"></p>
             <p id="city-1"></p>
-            <p id="email-1"></p>
+            <p>Email: <a id="email-1"></a></p>
           </span>
         </div>
       </div>
@@ -103,7 +103,7 @@
             <p id="DealBreaker-2-3"></p>
             <p id="age-2"></p>
             <p id="city-2"></p>
-            <p id="email-2"></p>
+            <p>Email: <a id="email-2"></a></p>
           </span>     
           </div>
         </div>
@@ -117,7 +117,7 @@
             <p id="DealBreaker-3-3"></p>
             <p id="age-3"></p>
             <p id="city-3"></p>
-            <p id="email-3"></p>
+            <p>Email: <a id="email-3"></a></p>
           </span>
         </div>
       </div>
@@ -132,7 +132,7 @@
             <p id="DealBreaker-4-3"></p>
             <p id="age-4"></p>
             <p id="city-4"></p>
-            <p id="email-4"></p>
+            <p>Email: <a id="email-4"></a></p>
           </span>     
         </div>
 
@@ -145,7 +145,7 @@
             <p id="DealBreaker-5-3"></p>
             <p id="age-5"></p>
             <p id="city-5"></p>
-            <p id="email-5"></p>
+            <p>Email: <a id="email-5"></a></p>
           </span>
         </div>
       </div>
@@ -227,63 +227,66 @@
                 var x = 0;
                 var gsReference;
                 snapshot.docs.forEach(doc => {
-                  userIDs[x] = doc.data().id;
-
-                  if (userIDs[0] != null)
+                  if (doc.data().id != user.uid)
                   {
-                    document.getElementById('first').style.display = "block";
-                    gsReference = storageRef.child(userIDs[0] + '/profilePicture/profile');
-                    gsReference.getDownloadURL().then(function(url) {
-                      document.getElementById('profile-picture-0').src=url;
-                    });
-                  }
+                    userIDs[x] = doc.data().id;
 
-                  if (userIDs[1] != null)
-                  {
-                    document.getElementById('second').style.display = "block";
-                    gsReference = storageRef.child(userIDs[1] + '/profilePicture/profile');
-                    gsReference.getDownloadURL().then(function(url) {
-                      document.getElementById('profile-picture-1').src=url;
-                    });
-                  }
+                    if (userIDs[0] != null)
+                    {
+                      document.getElementById('first').style.display = "block";
+                      gsReference = storageRef.child(userIDs[0] + '/profilePicture/profile');
+                      gsReference.getDownloadURL().then(function(url) {
+                        document.getElementById('profile-picture-0').src=url;
+                      });
+                    }
 
-                  if (userIDs[2] != null)
-                  {
-                    document.getElementById('third').style.display = "block";
-                    gsReference = storageRef.child(userIDs[2] + '/profilePicture/profile');
-                    gsReference.getDownloadURL().then(function(url) {
-                      document.getElementById('profile-picture-2').src=url;
-                    });
-                  }
+                    if (userIDs[1] != null)
+                    {
+                      document.getElementById('second').style.display = "block";
+                      gsReference = storageRef.child(userIDs[1] + '/profilePicture/profile');
+                      gsReference.getDownloadURL().then(function(url) {
+                        document.getElementById('profile-picture-1').src=url;
+                      });
+                    }
 
-                  if (userIDs[3] != null)
-                  {
-                    document.getElementById('fourth').style.display = "block";
-                    gsReference = storageRef.child(userIDs[3] + '/profilePicture/profile');
-                    gsReference.getDownloadURL().then(function(url) {
-                      document.getElementById('profile-picture-3').src=url;
-                    });
-                  }
+                    if (userIDs[2] != null)
+                    {
+                      document.getElementById('third').style.display = "block";
+                      gsReference = storageRef.child(userIDs[2] + '/profilePicture/profile');
+                      gsReference.getDownloadURL().then(function(url) {
+                        document.getElementById('profile-picture-2').src=url;
+                      });
+                    }
 
-                  if (userIDs[4] != null)
-                  {
-                    document.getElementById('fifth').style.display = "block";
-                    gsReference = storageRef.child(userIDs[4] + '/profilePicture/profile');
-                    gsReference.getDownloadURL().then(function(url) {
-                      document.getElementById('profile-picture-4').src=url;
-                    });
-                  }
+                    if (userIDs[3] != null)
+                    {
+                      document.getElementById('fourth').style.display = "block";
+                      gsReference = storageRef.child(userIDs[3] + '/profilePicture/profile');
+                      gsReference.getDownloadURL().then(function(url) {
+                        document.getElementById('profile-picture-3').src=url;
+                      });
+                    }
 
-                  if (userIDs[5] != null)
-                  {
-                    document.getElementById('sixth').style.display = "block";
-                    gsReference = storageRef.child(userIDs[5] + '/profilePicture/profile');
-                    gsReference.getDownloadURL().then(function(url) {
-                      document.getElementById('profile-picture-5').src=url;
-                    });
-                  }
+                    if (userIDs[4] != null)
+                    {
+                      document.getElementById('fifth').style.display = "block";
+                      gsReference = storageRef.child(userIDs[4] + '/profilePicture/profile');
+                      gsReference.getDownloadURL().then(function(url) {
+                        document.getElementById('profile-picture-4').src=url;
+                      });
+                    }
 
-                  x++;
+                    if (userIDs[5] != null)
+                    {
+                      document.getElementById('sixth').style.display = "block";
+                      gsReference = storageRef.child(userIDs[5] + '/profilePicture/profile');
+                      gsReference.getDownloadURL().then(function(url) {
+                        document.getElementById('profile-picture-5').src=url;
+                      });
+                    }
+
+                    x++;
+                  }
                 });
             });
           });

@@ -30,48 +30,52 @@ const setupUI = (user) => {
                     .where('identity', '==', imSeeking).where('seeking', '==', myIdentity)
                     .get().then((snapshot) => {
                     snapshot.docs.forEach(doc => {
-                        name = doc.data().firstName + " " + doc.data().lastName;
-                        age = todaysDate.getFullYear() - doc.data().birthYear;
-                        if (todaysDate.getMonth() < doc.data().birthMonth)
+                        if (doc.data().id != user.uid)
                         {
-                            age - 1;
-                        }
-                        else if (todaysDate.getMonth() == doc.data().birthMonth)
-                        {
-                            if (todaysDate.getDate() < doc.data().birthDay)
+                            name = doc.data().firstName + " " + doc.data().lastName;
+                            age = todaysDate.getFullYear() - doc.data().birthYear;
+                            if (todaysDate.getMonth() < doc.data().birthMonth)
                             {
                                 age - 1;
                             }
+                            else if (todaysDate.getMonth() == doc.data().birthMonth)
+                            {
+                                if (todaysDate.getDate() < doc.data().birthDay)
+                                {
+                                    age - 1;
+                                }
+                            }
+                            ageString = "Age: " + age;
+                            email = doc.data().contactEmail;
+                            cityState = doc.data().city + ", " + doc.data().state;
+                            dealbreakerOne = doc.data().dealbreakerOne;
+                            dealbreakerTwo = doc.data().dealbreakerTwo;
+                            dealbreakerThree = doc.data().dealbreakerThree;   
+
+                            displayName = document.getElementById("name-" + i);
+                            displayName.innerText = name;
+
+                            displayAge = document.getElementById("age-" + i);
+                            displayAge.innerText = ageString;
+
+                            displayEmail = document.getElementById("email-" + i);
+                            displayEmail.innerText = email;
+                            displayEmail.setAttribute("href", "mailto:" + email);
+
+                            displayCityState = document.getElementById("city-" + i);
+                            displayCityState.innerText = cityState;
+
+                            displayOne = document.getElementById("DealBreaker-" + i + "-1");
+                            displayOne.innerText = dealbreakerOne;
+
+                            displayTwo = document.getElementById("DealBreaker-" + i + "-2");
+                            displayTwo.innerText = dealbreakerTwo;
+
+                            displayThree = document.getElementById("DealBreaker-" + i + "-3");
+                            displayThree.innerText = dealbreakerThree;
+                            
+                            i++;
                         }
-                        ageString = "Age: " + age;
-                        email = "Email: " + doc.data().contactEmail;
-                        cityState = doc.data().city + ", " + doc.data().state;
-                        dealbreakerOne = doc.data().dealbreakerOne;
-                        dealbreakerTwo = doc.data().dealbreakerTwo;
-                        dealbreakerThree = doc.data().dealbreakerThree;   
-
-                        displayName = document.getElementById("name-" + i);
-                        displayName.innerText = name;
-
-                        displayAge = document.getElementById("age-" + i);
-                        displayAge.innerText = ageString;
-
-                        displayEmail = document.getElementById("email-" + i);
-                        displayEmail.innerText = email;
-
-                        displayCityState = document.getElementById("city-" + i);
-                        displayCityState.innerText = cityState;
-
-                        displayOne = document.getElementById("DealBreaker-" + i + "-1");
-                        displayOne.innerText = dealbreakerOne;
-
-                        displayTwo = document.getElementById("DealBreaker-" + i + "-2");
-                        displayTwo.innerText = dealbreakerTwo;
-
-                        displayThree = document.getElementById("DealBreaker-" + i + "-3");
-                        displayThree.innerText = dealbreakerThree;
-                        
-                        i++;
                     });
                 });
             });
