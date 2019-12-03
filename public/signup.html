@@ -37,6 +37,10 @@
                     <td><input type="text" required="required" id="city" name="city"></td>
                 </tr>
                 <tr>
+                    <td><label>Contact Email * </label></td>
+                    <td><input type="text" required="required" id="contactEmail" name="contactEmail"></td>
+                </tr>
+                <tr>
                     <td><label>State * </label></td>
                     <td>
                         <select required="required" id="state" name="state">
@@ -142,6 +146,18 @@
                     </td>
                 </tr>
                 <tr>
+                    <td><label>DealBreaker One *</label></td>
+                    <td><input type="text" required="required" id="dealbreaker-one" name="dealbreaker-one"></td>
+                </tr>
+                <tr>
+                    <td><label>DealBreaker Two *</label></td>
+                    <td><input type="text" required="required" id="dealbreaker-two" name="dealbreaker-two"></td>
+                </tr>
+                <tr>
+                    <td><label>DealBreaker Three *</label></td>
+                    <td><input type="text" required="required" id="dealbreaker-three" name="dealbreaker-three"></td>
+                </tr>
+                <tr>
                     <td>
                         <button type="submit">Sign Up</button>
                     </td>
@@ -210,7 +226,6 @@
         const auth = firebase.auth();
         const db = firebase.firestore();
         const functions = firebase.functions();
-        var firestore = firebase.firestore();
     </script>
 
     <!-- Bootstrap core JavaScript -->

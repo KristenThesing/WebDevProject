@@ -53,27 +53,23 @@
         </div>
         <div class="main-container">
             <div class="title">
-                <h2>Emily Jordan</h2>
+                <h2 id="displayName"></h2>
             </div>
-            <p><i class="fa fa-briefcase info"></i>University Student</p>
-            <p><i class="fa fa-home info"></i>Towson, MD</p>
-            <p><i class="fa fa-envelope info"></i>fakeemail@emails.com</p>
-            <p><i class="fa fa-phone info"></i>(123) 456-7890</p>
+            <p><i class="fa fa-home info"></i><span id="displayCityState"></span></p>
+            <p><i class="fa fa-envelope info"></i><span id="displayEmail"></span></p>
+            <p><i class="fa fa-birthday-cake info"></i><span id="displayAge"></span></p>
             <hr>
             <p><b><i class="fa fa-heart info"></i>Deal Breakers</b></p>
             <div class="dealbreaker">
-                <p>Would you ever go take a first date to the movies?</p>
-                <p>YES!</p>
+                <p id="dealbreaker-one"></p>
             </div>
             <hr>
             <div class="dealbreaker">
-                <p>Would you let a dog sleep in your bed?</p>
-                <p><YES!></p>
+                <p id="dealbreaker-two"></p>
             </div>
             <hr>
             <div class="dealbreaker">
-                <p>Do you think Epstein killed himself?</p>
-                <p>NO!</p>
+                <p id="dealbreaker-three"></p>
             </div>
         </div>
 
@@ -86,6 +82,7 @@
 <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-auth.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
 
 <script>
     // Initialize Firebase
@@ -102,14 +99,13 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
     const functions = firebase.functions();
-
 </script>
 
 <!-- Bootstrap core JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="js/index.js"></script>
 <script src="js/auth.js"></script>
+<script src="js/profile.js"></script>
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>

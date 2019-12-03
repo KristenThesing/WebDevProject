@@ -26,6 +26,7 @@ signupForm.addEventListener('submit', (e) => {
         return db.collection('users').doc(cred.user.uid).set({
             firstName: signupForm['firstName'].value,
             lastName: signupForm['lastName'].value,
+            contactEmail: null,
             city: null,
             state: null,
             birthMonth: null,

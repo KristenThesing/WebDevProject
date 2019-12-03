@@ -4,6 +4,7 @@ const completeSignup = document.querySelectorAll('.signed-up');
 const navItems = document.querySelectorAll('.nav-item');
 
 const setupUI = (user) => {
+
     //display all permanent links
     navItems.forEach(item => item.style.display = 'block');
 
