@@ -1,6 +1,5 @@
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
-const completeSignup = document.querySelectorAll('.signed-up');
 const navItems = document.querySelectorAll('.nav-item');
 
 const setupUI = (user) => {
@@ -12,13 +11,11 @@ const setupUI = (user) => {
         //toggle links
         loggedInLinks.forEach(item => item.style.display = 'block');
         loggedOutLinks.forEach(item => item.style.display = 'none');
-        completeSignup.forEach(item => item.style.display = 'block')
     }
     else
     {
         loggedInLinks.forEach(item => item.style.display = 'none');
         loggedOutLinks.forEach(item => item.style.display = 'block');
-        completeSignup.forEach(item => item.style.display = 'none')
     }
 
 };
@@ -51,21 +48,31 @@ editProfileForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     var user = firebase.auth().currentUser;
+    db.collection('users').where('id', '==', user.uid).get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            first = doc.data().firstName;
+            last = doc.data().lastName;
+            email = doc.data().contactEmail;
+            city = doc.data().city 
+            state = doc.data().state;
+            dealbreakerOne = doc.data().dealbreakerOne;
+            dealbreakerTwo = doc.data().dealbreakerTwo;
+            dealbreakerThree = doc.data().dealbreakerThree;
 
-    //save user profile data
-    db.collection('users').doc(user.uid).update({
-            firstName: editProfileForm['firstName'].value,
-            lastName: editProfileForm['lastName'].value,
-            contactEmail: editProfileForm['contactEmail'].value,
-            city: editProfileForm['city'].value,
+        db.collection('users').doc(user.uid).update({
+            firstName: (editProfileForm['firstName'].value != "" ? editProfileForm['firstName'].value : first),
+            lastName: (editProfileForm['lastName'].value != "" ? editProfileForm['lastName'].value : last),
+            contactEmail: (editProfileForm['contactEmail'].value != "" ? editProfileForm['contactEmail'].value : email),
+            city: (editProfileForm['city'].value != "" ? editProfileForm['city'].value : city),
             state: editProfileForm['state'].value,
             identity: editProfileForm['identity'].value,
             seeking: editProfileForm['seeking'].value,
-            dealbreakerOne: editProfileForm['dealbreaker-one'].value,
-            dealbreakerTwo: editProfileForm['dealbreaker-two'].value,
-            dealbreakerThree: editProfileForm['dealbreaker-three'].value,
-    }).then(() => {
-        editProfileForm.reset();
-        window.location.replace("profile.html"); 
+            dealbreakerOne: (editProfileForm['dealbreaker-one'].value != "" ? editProfileForm['dealbreaker-one'].value : dealbreakerOne),
+            dealbreakerTwo: (editProfileForm['dealbreaker-two'].value != "" ? editProfileForm['dealbreaker-two'].value : dealbreakerTwo),
+            dealbreakerThree: (editProfileForm['dealbreaker-three'].value != "" ? editProfileForm['dealbreaker-three'].value : dealbreakerThree),
+        }).then(() => {
+            editProfileForm.reset();
+            window.location.replace("profile.html"); 
+        });
     });
 });
