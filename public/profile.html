@@ -108,7 +108,7 @@
         if (user) {
             var user = firebase.auth().currentUser;
 
-            var gsReference = storageRef.child(user.uid + '/profilePicture/profile.jpg');
+            var gsReference = storageRef.child(user.uid + '/profilePicture/profile');
             gsReference.getDownloadURL().then(function(url) {
                 document.getElementById('profile-picture').src=url;
             })
