@@ -7,8 +7,6 @@ const setupUI = (user) => {
     //display all permanent links
     navItems.forEach(item => item.style.display = 'block');
 
-    console.log(user);
-
     if (user) {
         //toggle links
         loggedInLinks.forEach(item => item.style.display = 'block');

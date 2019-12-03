@@ -28,59 +28,9 @@
                 </button>
             </div>
         </nav>
-    
-        <!-- SIGN UP MODAL -->
-        <div id="modal-signup" class="modal">
-            <div class="modal-content">
-                <h4>Sign up</h4><br />
-                <form id="signup-form">
-                    <div class="input-field">
-                        <input type="text" id="firstName" required />
-                        <label for="firstName">First Name</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="text" id="lastName" required />
-                        <label for="lastName">Last Name</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="email" id="signup-email" required />
-                        <label for="signup-email">Email address</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" id="signup-password" required />
-                        <label for="signup-password">Choose password</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" id="confirm-password" required />
-                        <label for="confirm-password">Confirm password</label>
-                    </div>
-                    <button class="btn pink lighten-2 z-depth-0" id="saveChanges">Sign up</button>
-                    <p class="error pink-text center-align"></p>
-                </form>
-            </div>
-        </div>
-    
-        <!-- LOGIN MODAL -->
-        <div id="modal-login" class="modal">
-            <div class="modal-content">
-                <h4>Login</h4><br />
-                <form id="login-form">
-                    <div class="input-field">
-                        <input type="email" id="login-email" required />
-                        <label for="login-email">Email address</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="password" id="login-password" required />
-                        <label for="login-password">Your password</label>
-                    </div>
-                    <button class="btn pink lighten-2 z-depth-0">Login</button>
-                    <p class="error pink-text center-align"></p>
-                </form>
-            </div>
-        </div>
 
         <div class="signed-up below-nav">
-        <form method="GET" name="signupForm" onsubmit="return validateForm()">
+        <form id="completeSignupForm" name="signupForm">
             <table>
                 <tr>
                     <td><label>City * </label></td>
@@ -184,9 +134,11 @@
                         <label id="chkSeeking">Seeking a *</label>
                     </td>
                     <td>
-                        <input type="checkbox" value="man">Man
-                        <input type="checkbox" value="woman">Woman
-                        <input type="checkbox" value="nbother">Non-Binary/Other
+                        <select id="seeking" name="seeking">
+                            <option value="man">Man</option>
+                            <option value="woman">Woman</option>
+                            <option value="nbother">Non-Binary/Other</option>
+                        </select>
                     </td>
                 </tr>
                 <tr>
@@ -259,57 +211,13 @@
         const db = firebase.firestore();
         const functions = firebase.functions();
         var firestore = firebase.firestore();
-
-
-        const docRef = firestore.collection("users").doc("SignUpData");
-
-        const firstName = document.getElementById('firstName');
-        const lastName = document.getElementById('lastName');
-        const emailAddress = document.getElementById('signup-email');
-        const password1 = document.getElementById('signup-password');
-        const password2 = document.getElementById('confirm-password');
-        const saveButton = document.getElementById('saveChanges');
-
-        saveButton.addEventListener("click",function(){
-             const firstName1 = firstName.value;
-             const lastName1 = lastName.value;
-             const emailAddress1 =emailAddress.value;
-
-             const password1 = document.getElementById('signup-password');
-             const password2 = document.getElementById('confirm-password');
-
-             const signUppassword = password1.value;
-             const confirmPassword = password2.value;
-             
-
-             docRef.set({
-        firstName:firstName1,
-        lastName:lastName1,
-        emailAddress: emailAddress1,
-        password1: signUppassword,
-        password2:confirmPassword
-
-
-
-
-        });
-    })
-
-
-        
-
-
-
-
-
-
     </script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="js/index.js"></script>
-    <script src="js/auth.js"></script>
+    <script src="js/signup.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>

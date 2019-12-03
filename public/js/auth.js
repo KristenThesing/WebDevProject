@@ -25,7 +25,15 @@ signupForm.addEventListener('submit', (e) => {
     auth.createUserWithEmailAndPassword(email, password).then(cred => {
         return db.collection('users').doc(cred.user.uid).set({
             firstName: signupForm['firstName'].value,
-            lastName: signupForm['lastName'].value
+            lastName: signupForm['lastName'].value,
+            city: null,
+            state: null,
+            birthMonth: null,
+            birthDay: null,
+            birthYear: null,
+            identity: null,
+            seeking: null,
+            subscriptionStatus: "free"
         });
     }).then(() => {
         const modal = document.querySelector('#modal-signup');
