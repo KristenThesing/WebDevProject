@@ -20,7 +20,7 @@ const setupUI = (user) => {
         db.collection('users').where('id', '==', user.uid).get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 name = doc.data().firstName + " " + doc.data().lastName;
-                age = todaysDate.getFullYear() - doc.data().birthYear + " years old";
+                age = todaysDate.getFullYear() - doc.data().birthYear;
                 if (todaysDate.getMonth() < doc.data().birthMonth)
                 {
                     age - 1;
@@ -32,6 +32,7 @@ const setupUI = (user) => {
                         age - 1;
                     }
                 }
+                ageString = age + " years old";
                 email = doc.data().contactEmail;
                 cityState = doc.data().city + ", " + doc.data().state;
                 dealbreakerOne = doc.data().dealbreakerOne;
@@ -42,7 +43,7 @@ const setupUI = (user) => {
                 displayName.innerText = name;
 
                 var displayAge = document.getElementById("displayAge");
-                displayAge.innerText = age;
+                displayAge.innerText = ageString;
 
                 var displayEmail = document.getElementById("displayEmail");
                 displayEmail.innerText = email;
