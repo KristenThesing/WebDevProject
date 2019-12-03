@@ -67,5 +67,26 @@ const setupUI = (user) => {
         loggedOutLinks.forEach(item => item.style.display = 'block');
         completeSignup.forEach(item => item.style.display = 'none')
     }
-
 };
+
+//listen for auth status changes
+auth.onAuthStateChanged(user => {
+    if (user) {
+        user.getIdTokenResult().then(idTokenResult => {
+            user.admin = idTokenResult.claims.admin;
+            setupUI(user);
+        })
+    }
+    else
+    {
+        setupUI();
+    }
+});
+
+//logout method
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (e) => {
+    e.preventDefault();
+    auth.signOut();
+    window.location.replace("index.html");
+});

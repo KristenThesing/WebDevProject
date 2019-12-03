@@ -40,7 +40,7 @@
                             <a class="nav-link" href="subscription.html">Upgrade to Premium</a>
                         </li>
                         <li class="nav-item logged-in">
-                            <a class="nav-link" href="#">Logout</a>
+                            <a class="nav-link" href="#" id="logout">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -163,6 +163,12 @@
                 </tr>
                 <tr>
                     <td>
+                        <progress value="0" max="100" id="uploader">0%</progress>
+                        <input type="file" value="upload" id="fileButton" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <button type="submit" id="saveChanges">Save Changes</button>
                     </td>
                 </tr>
@@ -176,6 +182,7 @@
     <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-functions.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.1.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase-storage.js"></script>
     
     <script>
         // Initialize Firebase
@@ -183,6 +190,7 @@
             apiKey: "AIzaSyC-eG4Sn1gAbnYDdSn_kObzVTGTsfH09lk",
             authDomain: "dealbreaker-dating.firebaseapp.com",
             databaseURL: "https://dealbreaker-dating.firebaseio.com",
+            storageBucket: "dealbreaker-dating.appspot.com",
             projectId: "dealbreaker-dating",
         };
         
@@ -195,7 +203,30 @@
         var firestore = firebase.firestore();
     </script>
 
-    <script src="js/auth.js"></script>
-    <script src="js/index.js"></script>
+    <script>
+        fileButton.addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            var user = firebase.auth().currentUser;
+            var storageRef = firebase.storage().ref(user.uid + '/profilePicture/profile.' + file.name.split('.').pop());
+            var task = storageRef.put(file);
+            task.on('state_changed', 
+                function progress(snapshot)
+                {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                },
+                
+                function error(err) {
+
+                },
+                
+                function complete() {
+
+                }
+            
+            );
+        });
+    </script>
+
     <script src="js/editProfile.js"></script>
 </html>

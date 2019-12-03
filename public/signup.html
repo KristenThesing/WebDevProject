@@ -240,8 +240,7 @@
         fileButton.addEventListener('change', function(e) {
             var file = e.target.files[0];
             var user = firebase.auth().currentUser;
-            console.log(user);
-            var storageRef = firebase.storage().ref(user + '/profilePicture/' + file.name);
+            var storageRef = firebase.storage().ref(user.uid + '/profilePicture/profile.' + file.name.split('.').pop());
             var task = storageRef.put(file);
             task.on('state_changed', 
                 function progress(snapshot)
