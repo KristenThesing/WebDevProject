@@ -1,6 +1,5 @@
 const loggedOutLinks = document.querySelectorAll('.logged-out');
 const loggedInLinks = document.querySelectorAll('.logged-in');
-const subscriptionLink = document.querySelectorAll('.subscription');
 const completeSignup = document.querySelectorAll('.signed-up');
 const navItems = document.querySelectorAll('.nav-item');
 
@@ -15,7 +14,7 @@ const setupUI = (user) => {
         loggedOutLinks.forEach(item => item.style.display = 'none');
         completeSignup.forEach(item => item.style.display = 'block');
         var user = firebase.auth().currentUser;
-        var name, age, email, cityState, dealbreakerOne, dealbreakerTwo, dealbreakerThree, subscription;
+        var name, age, email, cityState, dealbreakerOne, dealbreakerTwo, dealbreakerThree;
         var todaysDate = new Date();
 
         db.collection('users').where('id', '==', user.uid).get().then((snapshot) => {
@@ -39,12 +38,6 @@ const setupUI = (user) => {
                 dealbreakerOne = doc.data().dealbreakerOne;
                 dealbreakerTwo = doc.data().dealbreakerTwo;
                 dealbreakerThree = doc.data().dealbreakerThree;
-                subscription = doc.data().subscriptionStatus;
-
-                if (subscription == "free")
-                {
-                    subscriptionLink.style.display = 'block';
-                }
 
                 var displayName = document.getElementById("displayName");
                 displayName.innerText = name;

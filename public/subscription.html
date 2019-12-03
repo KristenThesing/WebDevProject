@@ -42,7 +42,7 @@
                             <a class="nav-link" href="subscription.html">Upgrade to Premium</a>
                         </li>
                         <li class="logged-in" style="display: none">
-                            <a class="nav-link" href="#" id="logout">Logout</a>
+                            <a class="nav-link" href="#">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -55,9 +55,9 @@
             </p>
 
             <form id = "pay" method = "get" onsubmit = "return payment.js">
-                <button type="button" id= "weekButton" class="btn btn-outline-primary"><b>Weekly</b><br><small>$4.99/week</small></button>
-                <button type="button" id="monthButton" class="btn btn-outline-primary"><b>Monthly</b><br><small>$14.99/month <i>(25% off)</i></small></button>
-                <button type="button" id="yearButton" class="btn btn-outline-primary"><b>Annually</b><br><small>$149.99/year <i>(40% off)</i></small></button>
+                <button type="button" id= "weekButton" class="btn btn-outline-primary"><b>1 Week</b><br><small>Standard Price</small></button>
+                <button type="button" id="monthButton" class="btn btn-outline-primary"><b>1 Month</b><br><small>Save 20%</small></button>
+                <button type="button" id="threeMonthButton" class="btn btn-outline-primary"><b>3 Months</b><br><small>Save 30%</small></button>
             </form>
         </div>
     </body>
@@ -85,12 +85,46 @@
         const db = firebase.firestore();
         const functions = firebase.functions();
         var firestore = firebase.firestore();
+
+
+        const docRef = firestore.collection("users").doc("profileData");
+        const weekButton = document.getElementById('weekButton');
+        const monthButton = document.getElementById('monthButton');
+        const threeMonthButton = document.getElementById('threeMonthButton');
+
+        weekButton.addEventListener("click",function(){
+            const weekButton = "oneWeekSubcription"
+            console.log("clicked" + weekButton);
+
+            docRef.set({
+                typeSubscription: weekButton
+            });
+        })
+        monthButton.addEventListener("click",function(){
+            const monthButton = "oneMonthSubcription"
+            console.log("clicked" + monthButton);
+
+            docRef.set({
+                typeSubscription: monthButton
+            });
+        })
+        threeMonthButton.addEventListener("click",function(){
+            const threeMonthButton = "threeMonthSubcription"
+            console.log("clicked" + threeMonthButton);
+
+            docRef.set({
+                typeSubscription: threeMonthButton
+            });
+        })
+
+
     </script>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="js/subscription.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/auth.js"></script>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 </html>
